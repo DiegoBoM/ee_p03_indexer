@@ -115,7 +115,7 @@ public class ArbolB {
     }
     //Rotacion simple a la izquierda
     private Nodo rotacionDer(Nodo rotaIzq) {
-        System.out.println("Rotacion simple a la derecha");
+        //System.out.println("Rotacion simple a la derecha");
         Nodo aux = rotaIzq.der;
         aux.padre = rotaIzq.padre;
  
@@ -141,7 +141,7 @@ public class ArbolB {
     }
     //Rotacion simple a la derecha
     private Nodo rotacionIzq(Nodo rotaDer) {
-         System.out.println("Rotacion simple a la izquierda");
+         //System.out.println("Rotacion simple a la izquierda");
 
         Nodo temp = rotaDer.izq;
         temp.padre = rotaDer.padre;
@@ -168,13 +168,13 @@ public class ArbolB {
     }
  
     private Nodo rotaCompID(Nodo rotaCompID) {
-        System.out.println("Rotacion compuesta izquierda a derecha");
+        //System.out.println("Rotacion compuesta izquierda a derecha");
         rotaCompID.izq = rotacionDer(rotaCompID.izq);
         return rotacionIzq(rotaCompID);
     }
  
     private Nodo rotaCompDI(Nodo rotaCompDI) {
-        System.out.println("Rotacion compuesta derecha a izquierda");
+        //System.out.println("Rotacion compuesta derecha a izquierda");
         rotaCompDI.der = rotacionIzq(rotaCompDI.der);
         return rotacionDer(rotaCompDI);
     }
@@ -190,16 +190,16 @@ public class ArbolB {
             aux.fe = obtenerPeso(aux.der) - obtenerPeso(aux.izq);
     }
     
-    //public JPanel dibujaArbol(ArbolB ar) {
-      //  return new Grafico(ar);
+    //public JPanel dibujaArbol(ArbolB arb) {
+      //  return new Grafico(arb);
     //}
 
     //public void dibujarArbol() {
-        //JFrame arbolB = new JFrame("Arbol grafico");
+      //  JFrame arbolB = new JFrame("Arbol grafico");
         //arbolB.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //arbolB.add(dibujaArbol(ar));
-       // arbolB.setSize(600, 800);
-      //  arbolB.setVisible(true);
+        //arbolB.add(dibujaArbol(arb));
+        //arbolB.setSize(600, 800);
+        //arbolB.setVisible(true);
     //}
 
    
@@ -243,6 +243,30 @@ public class ArbolB {
         }
     }
 
+    public boolean busqueda(int numero){
+     Nodo aux=raiz;
+     if(raiz!= null){ 
+     while(aux!= null){
+         if(aux.getDato()== numero){
+         return true;
+         }
+         else
+         if(aux.getDato()< numero){
+         aux=aux.getDer();  
+         }
+         else
+         if(aux.getDato()>numero){
+          aux=aux.getIzq();   
+            }
+          }
+         }
+         return false;
+    }
+
+     
+    
+    
+    
     public boolean buscaElemento(int info) {
 
         //Método encargado de proporcionar la información del nodo solicitado(nivel del nodo, valor de sus nodos
@@ -268,7 +292,9 @@ public class ArbolB {
                         //System.out.println("Nodo de tipo: rama");
                         //System.out.println("Altura del nodo: "+retornarAltura(reco));
                         {
+                            System.out.println("el elemento se encontro");
                             return true;
+                            
                         }
                     }
                 }
@@ -280,6 +306,7 @@ public class ArbolB {
             }
 
         }
+        System.out.println("el elemento no se encontro");
         return false;
     }
 }
