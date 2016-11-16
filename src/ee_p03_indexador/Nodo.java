@@ -15,14 +15,24 @@ public class Nodo {
 	Nodo izq;
         Nodo padre;
 	int dato;
+        String val="";
+
+    public String getValor() {
+        return val;
+    }
+
+    public void setValor(String valor) {
+        this.val= valor;
+    }
         int fe;
         int peso;
 	boolean root;
 
  
-        public Nodo(int num, Nodo p) {
+        public Nodo(int num, Nodo p,String valor) {
             dato = num;
             padre = p;
+            val=valor;
         }
         
 	public Nodo(){
@@ -32,12 +42,13 @@ public class Nodo {
                 this.fe = 0;
 	}
         
-        public Nodo(int d){
+        public Nodo(int d,String valor){
 		this.izq = null;
 		this.der = null;
                 this.dato = d;
                 this.fe = 1;
                 this.peso = 0;
+                this.val=valor;
 	}
 
 

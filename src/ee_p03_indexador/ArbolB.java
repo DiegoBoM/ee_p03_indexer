@@ -11,6 +11,7 @@ package ee_p03_indexador;
  */
 
 import java.util.Scanner;
+import static ee_p03_indexador.Pantalla.arb;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -27,10 +28,10 @@ public class ArbolB {
     public ArbolB() {
         raiz = null;
     }
-
-    public boolean insertar(int nuevo) {
+    
+    public boolean insertar(int nuevo,String valor) {
         if (raiz == null)
-            raiz = new Nodo(nuevo, null);
+            raiz = new Nodo(nuevo, null,valor);
         else {
             Nodo aux = raiz;
             Nodo padre;
@@ -45,9 +46,9 @@ public class ArbolB {
                 
                 if (aux == null) {
                     if (irIzq) {
-                        padre.izq = new Nodo(nuevo, padre);
+                        padre.izq = new Nodo(nuevo, padre,valor);
                     } else {
-                        padre.der = new Nodo(nuevo, padre);
+                        padre.der = new Nodo(nuevo, padre,valor);
                     }
                     rebalanceo(padre);
                     break;
@@ -190,17 +191,17 @@ public class ArbolB {
             aux.fe = obtenerPeso(aux.der) - obtenerPeso(aux.izq);
     }
     
-    //public JPanel dibujaArbol(ArbolB arb) {
-      //  return new Grafico(arb);
-    //}
+    public JPanel dibujaArbol(ArbolB arb) {
+        return new Grafico(arb);
+    }
 
-    //public void dibujarArbol() {
-      //  JFrame arbolB = new JFrame("Arbol grafico");
-        //arbolB.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //arbolB.add(dibujaArbol(arb));
-        //arbolB.setSize(600, 800);
-        //arbolB.setVisible(true);
-    //}
+    public void dibujarArbol() {
+        JFrame arbolB = new JFrame("Arbol grafico");
+        arbolB.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        arbolB.add(dibujaArbol(arb));
+        arbolB.setSize(600, 800);
+        arbolB.setVisible(true);
+    }
 
    
 

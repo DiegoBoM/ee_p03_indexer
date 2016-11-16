@@ -25,7 +25,7 @@ public class Grafico extends JPanel{
 
 	public Grafico(ArbolB arbol){
           miArbol = arbol;
-          setBackground(Color.cyan);
+          setBackground(Color.white);
           posicion = new HashMap();
           tamArbol = new HashMap();
           ocupado = true;
@@ -114,9 +114,9 @@ public class Grafico extends JPanel{
          g.draw(rect);
           String valor="";
           if(nodo.der==null && nodo.izq==null){
-             valor=nodo.dato +":"+nodo.fe;
+             valor=nodo.getValor()+":"+nodo.fe;
           }else{
-            valor=nodo.dato+":"+nodo.fe;
+            valor=nodo.getValor()+":"+nodo.fe;
           }
 
          g.drawString(valor, rect.x + 3, rect.y + Y2);
